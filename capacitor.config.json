@@ -1,0 +1,1 @@
+{"appId":"shop.ilseplacencia.needsme","appName":"NeedsMe Ai","backgroundColor":"#FFFBF7","webDir":"dist","plugins":{"FirebaseAuthentication":{"skipNativeAuth":true,"providers":["google.com","apple.com"]}}}

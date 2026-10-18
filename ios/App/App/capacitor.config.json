@@ -1,0 +1,7 @@
+{
+	"appId": "shop.ilseplacencia.needsme",
+	"appName": "Needs Me",
+	"backgroundColor": "#FFFBF7",
+	"webDir": "dist",
+	"packageClassList": []
+}
