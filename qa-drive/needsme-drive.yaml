@@ -1,4 +1,20 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v4 (2026-10-23) — v3 FAILED-INSTRUMENT at drive 3 (run
+# 39947786297, step-018, the door-gone wait on "Explore the demo"):
+# BOTH v3 cures PROVED — the email landed (01 frame: typed +
+# focused) and the password landed (21 bullets, field focused) —
+# then the submit never fired. The failure hierarchy puts "Join
+# Needs Me" at [31,495][371,541]pt with the input-accessory bar
+# standing OVER those bounds (the password field keeps focus), and
+# v3's dismissal point (90%, 62%) sits ~26pt BELOW the bar's Done
+# tick, whose centre this drive's own frame measures at (90%, 59%).
+# The missed dismissal left the bar standing; the Join tap's centre
+# (201,518)pt landed on the bar and was absorbed. v4 cures: the
+# three password legs' dismissal point corrected to the measured
+# (90%, 59%), and the three Join taps gain retryTapIfNoChange. The
+# class is banked as BAR-OVER-SUBMIT (a sibling of the dismissal
+# hazard: a dismissal tap must be MEASURED on the current door's
+# own frame, never carried by percentage habit). v3: 15,370 B.
 # Version: v3 (2026-10-23) — v2 FAILED-INSTRUMENT at drive 2 (run
 # 39944972026, step-011 assert "Your password"): TWO instrument
 # faults compounded. (1) THE FOCUS RACE (the Fit class): the email
@@ -86,11 +102,12 @@ appId: shop.ilseplacencia.needsme
     waitUntilVisible: true
 - inputText: "${TEST_PASSWORD}"
 - tapOn:
-    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
+    point: "90%, 59%"  # accessory Done, CENTRE MEASURED on drive 3 (bar overlays Join; v3s 62% missed the tick by ~26pt and the bar ate the submit)
 - takeScreenshot: 02-password-step
 - tapOn:
     text: "Join Needs Me"
     waitUntilVisible: true
+    retryTapIfNoChange: true
 - extendedWaitUntil:
     notVisible:
       text: "Explore the demo"
@@ -268,10 +285,11 @@ appId: shop.ilseplacencia.needsme
     waitUntilVisible: true
 - inputText: "${TEST_PASSWORD}"
 - tapOn:
-    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
+    point: "90%, 59%"  # accessory Done, CENTRE MEASURED on drive 3 (bar overlays Join; v3s 62% missed the tick by ~26pt and the bar ate the submit)
 - tapOn:
     text: "Join Needs Me"
     waitUntilVisible: true
+    retryTapIfNoChange: true
 - extendedWaitUntil:
     notVisible:
       text: "Explore the demo"
@@ -347,10 +365,11 @@ appId: shop.ilseplacencia.needsme
     waitUntilVisible: true
 - inputText: "${TEST_PASSWORD2}"
 - tapOn:
-    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
+    point: "90%, 59%"  # accessory Done, CENTRE MEASURED on drive 3 (bar overlays Join; v3s 62% missed the tick by ~26pt and the bar ate the submit)
 - tapOn:
     text: "Join Needs Me"
     waitUntilVisible: true
+    retryTapIfNoChange: true
 - extendedWaitUntil:
     notVisible:
       text: "Explore the demo"
