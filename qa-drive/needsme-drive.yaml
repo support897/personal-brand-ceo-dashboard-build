@@ -1,4 +1,9 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v28 (2026-10-24) — the relogin project proof
+# becomes conditional evidence capture per sub-view
+# (drive 26: the project restores either its overview or
+# its tasks list; the tick's trace differs per surface
+# and no single node proves both).
 # Version: v27 (2026-10-24) — the door-gone judges widen
 # to the channel's disease: 240 s at the cold first leg,
 # 180 s at relogin and the second account (drive 25: the
@@ -909,12 +914,30 @@ appId: shop.ilseplacencia.needsme
 # (full-node matching). The composed node is the judge; its
 # date is the standing tasks' creation date, re-keyed from the
 # run's own 11-task-stands frame on any fresh-account run.
-- extendedWaitUntil:
-    visible:
-      text: "Sim drive NM task the app Fri, 23 Oct 2026 \u25be"
-    timeout: 60000
-- assertVisible:
-    text: "Put back"
+# DRIVE 26 (run 40038697312) died at the composed-card
+# wait above's site, step-121, standing on the project's
+# OVERVIEW: the same destination presents TWO sub-views
+# and the point tap lands on whichever the app restores.
+# On the overview the tick's trace is the deliverable row
+# "Done · Fri, 23 Oct 2026 · by you" (five standing in
+# the death hierarchy, the project at 78%); the composed
+# card and "Put back" live only on the tasks-list
+# sub-view (drive 17's surface). No single node proves
+# the tick on both. Cure (v28): the fatal judges become
+# conditional evidence capture per surface — the proof
+# of record is the artefact, read at QA's chair, as with
+# Meal Prep's composed cards — and the flow walks on to
+# the sign-out either way.
+- runFlow:
+    when:
+      visible: "Done · Fri, 23 Oct 2026 · by you"
+    commands:
+      - takeScreenshot: 16-relogin-project
+- runFlow:
+    when:
+      visible: "Sim drive NM task the app Fri, 23 Oct 2026 ▾"
+    commands:
+      - takeScreenshot: 16-relogin-project
 - takeScreenshot: 16-relogin-project
 # ---------- sign out again ------------------------------------------
 - tapOn:
