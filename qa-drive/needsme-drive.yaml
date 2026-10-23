@@ -1,4 +1,17 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v10 (2026-10-23) — v9's GREETING CURE LANDED on
+# drive 8 (run 39963727071): the sidebar opened, "Hello,
+# friend" passed, the project road opened, and the task title
+# typed whole into the Add-a-task sheet. Death at step-035,
+# the project pick-row: FULL-NODE's fifth conviction — the
+# row's node is "Personal ›", chevron included, and the flow
+# tapped the fragment "Personal". The picker's own strings
+# were re-read in the shipped chunk the same hour ("+ New
+# project" · "Name your project" · "Start project" all plain,
+# no decorations), and this sheet's accessory tick is
+# re-measured from drive 8's failure frame at (90%, 57%) —
+# the door's point missed low here and the keyboard stood in
+# the frame. v10 changes exactly those two things.
 # Version: v9 (2026-10-23) — v8's SIDEBAR CURE LANDED on
 # drive 7 (run 39959660252): the sidebar stands open in the
 # failure frame on the tree-name tap. Death at step-026, the
@@ -282,14 +295,14 @@ appId: shop.ilseplacencia.needsme
     waitUntilVisible: true
 - inputText: "Sim drive NM task"
 - tapOn:
-    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
+    point: "90%, 57%"  # this sheet's accessory tick, MEASURED on drive 8's failure frame (the door's 62% missed low here; the keyboard stood in the frame)
 - takeScreenshot: 08-task-typed
 # The Project pick-row: its standing value on a fresh sheet is the
 # default project "Personal" (the first of the shipped list);
 # tapping the row opens the pick list, whose foot carries the
 # new-project road (the b12 walk's picker read, in shipped texts).
 - tapOn:
-    text: "Personal"
+    text: "Personal ›"
     waitUntilVisible: true
 - extendedWaitUntil:
     visible:
