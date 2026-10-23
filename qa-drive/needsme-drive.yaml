@@ -41,7 +41,8 @@ appId: shop.ilseplacencia.needsme
     text: "you@example.com"
     waitUntilVisible: true
 - inputText: "${TEST_EMAIL}"
-- hideKeyboard
+- tapOn:
+    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
 - takeScreenshot: 01-email-step
 - tapOn:
     text: "Next"
@@ -54,7 +55,8 @@ appId: shop.ilseplacencia.needsme
     text: "Password"
     waitUntilVisible: true
 - inputText: "${TEST_PASSWORD}"
-- hideKeyboard
+- tapOn:
+    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
 - takeScreenshot: 02-password-step
 - tapOn:
     text: "Join Needs Me"
@@ -78,7 +80,8 @@ appId: shop.ilseplacencia.needsme
     text: "Your name"
     waitUntilVisible: true
 - inputText: "Sim Driver NM"
-- hideKeyboard
+- tapOn:
+    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
 - takeScreenshot: 03-tour-name
 - tapOn:
     text: "Next →"
@@ -139,7 +142,8 @@ appId: shop.ilseplacencia.needsme
     text: "Task title"
     waitUntilVisible: true
 - inputText: "Sim drive NM task"
-- hideKeyboard
+- tapOn:
+    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
 - takeScreenshot: 08-task-typed
 # The Project pick-row: its standing value on a fresh sheet is the
 # default project "Personal" (the first of the shipped list);
@@ -164,7 +168,8 @@ appId: shop.ilseplacencia.needsme
     text: "Project name"
     waitUntilVisible: true
 - inputText: "Sim drive NM project"
-- hideKeyboard
+- tapOn:
+    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
 - takeScreenshot: 10-project-named
 - tapOn:
     text: "Start project"
@@ -215,7 +220,8 @@ appId: shop.ilseplacencia.needsme
     text: "you@example.com"
     waitUntilVisible: true
 - inputText: "${TEST_EMAIL}"
-- hideKeyboard
+- tapOn:
+    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
 - tapOn:
     text: "Next"
     waitUntilVisible: true
@@ -227,7 +233,8 @@ appId: shop.ilseplacencia.needsme
     text: "Password"
     waitUntilVisible: true
 - inputText: "${TEST_PASSWORD}"
-- hideKeyboard
+- tapOn:
+    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
 - tapOn:
     text: "Join Needs Me"
     waitUntilVisible: true
@@ -288,7 +295,8 @@ appId: shop.ilseplacencia.needsme
     text: "you@example.com"
     waitUntilVisible: true
 - inputText: "${TEST_EMAIL2}"
-- hideKeyboard
+- tapOn:
+    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
 - tapOn:
     text: "Next"
     waitUntilVisible: true
@@ -300,7 +308,8 @@ appId: shop.ilseplacencia.needsme
     text: "Password"
     waitUntilVisible: true
 - inputText: "${TEST_PASSWORD2}"
-- hideKeyboard
+- tapOn:
+    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
 - tapOn:
     text: "Join Needs Me"
     waitUntilVisible: true
@@ -316,7 +325,8 @@ appId: shop.ilseplacencia.needsme
     text: "Your name"
     waitUntilVisible: true
 - inputText: "Second Driver NM"
-- hideKeyboard
+- tapOn:
+    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
 - tapOn:
     text: "Next →"
     waitUntilVisible: true
