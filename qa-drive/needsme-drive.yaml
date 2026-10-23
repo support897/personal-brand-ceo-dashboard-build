@@ -1,4 +1,15 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v8 (2026-10-23) — carries v7 whole (Pip's complete
+# heading; NM6 pre-dated it) PLUS the sidebar cure from drive
+# 6 (run 39957003510, step-024): v6's design travelled CLEAN —
+# the account loaded whole, no tour wait burned, "Add a task"
+# standing in frame 05 — and died tapping the sidebar toggle
+# by Maestro id "menuBtn": the WebView tree exposes NO such
+# id. The toggle's tree name, read from drive 6's own failure
+# hierarchy, is "Hide or show the sidebar" (bounds [14,75]
+# [53,113]pt). v8 taps it by that name at all seven sites.
+# Class note: DOM ids do not surface as Maestro ids in this
+# lane; a toggle is addressed by its accessibility label.
 # Version: v7 (2026-10-23) — the FULL-NODE MATCHING completion
 # (class proven on Fit drive 4 the same hour): the name-ask
 # selectors carry Pip's complete heading "Hi! I'm Pip.
@@ -235,7 +246,7 @@ appId: shop.ilseplacencia.needsme
 # Home first, through the sidebar (the shell's list item for the
 # home view reads "Needs Me", under the MY LIST group).
 - tapOn:
-    id: "menuBtn"
+    text: "Hide or show the sidebar"
 - tapOn:
     text: "Needs Me"
     waitUntilVisible: true
@@ -322,7 +333,7 @@ appId: shop.ilseplacencia.needsme
 # The sidebar itself carries the sign-out (the b12 walk's sidebar
 # census: ... PROJECTS ... MORE ▸ Sign out).
 - tapOn:
-    id: "menuBtn"
+    text: "Hide or show the sidebar"
 - tapOn:
     text: "Sign out"
     waitUntilVisible: true
@@ -393,7 +404,7 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
 - takeScreenshot: 14-relogin-inside
 - tapOn:
-    id: "menuBtn"
+    text: "Hide or show the sidebar"
 - tapOn:
     text: "Needs Me"
     waitUntilVisible: true
@@ -408,7 +419,7 @@ appId: shop.ilseplacencia.needsme
 # carries the task, and the tick stands with it: a done row's
 # button reads "Put back", not "Done".
 - tapOn:
-    id: "menuBtn"
+    text: "Hide or show the sidebar"
 - tapOn:
     text: "Sim drive NM project"
     waitUntilVisible: true
@@ -421,7 +432,7 @@ appId: shop.ilseplacencia.needsme
 - takeScreenshot: 16-relogin-project
 # ---------- sign out again ------------------------------------------
 - tapOn:
-    id: "menuBtn"
+    text: "Hide or show the sidebar"
 - tapOn:
     text: "Sign out"
     waitUntilVisible: true
@@ -518,7 +529,7 @@ appId: shop.ilseplacencia.needsme
     timeout: 30000
 - takeScreenshot: 18-second-account-in
 - tapOn:
-    id: "menuBtn"
+    text: "Hide or show the sidebar"
 - tapOn:
     text: "Needs Me"
     waitUntilVisible: true
@@ -534,7 +545,7 @@ appId: shop.ilseplacencia.needsme
     text: "Sim drive NM task"
 - takeScreenshot: 19-isolation-home
 - tapOn:
-    id: "menuBtn"
+    text: "Hide or show the sidebar"
 # Isolation, project side: the first account's project never
 # renders in this account's sidebar PROJECTS group.
 - assertNotVisible:
