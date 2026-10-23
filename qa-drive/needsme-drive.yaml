@@ -1,5 +1,5 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
-# Version: v22 (2026-10-24) — DIAGNOSTIC ONLY, no behaviour
+# Version: v23 (2026-10-24) — DIAGNOSTIC ONLY, no behaviour
 # change. Drive 10 (run 39970639716) stands as the
 # campaign's strangest artefact: 05-inside stands whole
 # in-app, drive 9's project + task standing ("Hello,
@@ -874,20 +874,24 @@ appId: shop.ilseplacencia.needsme
 # tick itself moves: 0% while nothing is ticked, 20% with one
 # of the five standing tasks ticked. Both forms are tapped
 # conditionally; the judges below decide what actually stands.
-- runFlow:
-    when:
-      visible: "Sim drive NM project 20%"
-    commands:
-      - tapOn:
-          text: "Sim drive NM project 20%"
-          waitUntilVisible: true
-- runFlow:
-    when:
-      visible: "Sim drive NM project 0%"
-    commands:
-      - tapOn:
-          text: "Sim drive NM project 0%"
-          waitUntilVisible: true
+# DRIVE 21 (run 40022681653) died at the composed-card
+# wait below, step-129 — and its death hierarchy carries
+# the campaign's best NeedsMe news: the sidebar row reads
+# "Sim drive NM project 33%". THE TICK LANDED (v19's
+# point tick, first judged: two of the six standing
+# duplicates done — the result-keyed retry ticked a
+# second card after the reflow) and it STANDS AFTER
+# RELOGIN. But neither carried form (0% / 20%) matched
+# 33%, so both row taps stood down. The percentage is
+# unstable by construction (the create adds a task every
+# drive), so no text form can be right for long. Cure
+# (v23): the row is tapped by POINT at its measured
+# centre from the death hierarchy ([12,583][325,637]
+# -> (42%, 70%)); the composed-card judge below remains
+# the proof of arrival.
+- tapOn:
+    point: "42%, 70%"
+- waitForAnimationToEnd
 # DRIVE 17 died at this wait, step-108: on the PROJECT page the
 # card's node COMPOSES title + tag + date ("Sim drive NM task
 # the app Fri, 23 Oct 2026 \u25be", read from the failure
