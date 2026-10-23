@@ -1,5 +1,5 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
-# Version: v12 (2026-10-24) — DIAGNOSTIC ONLY, no behaviour
+# Version: v22 (2026-10-24) — DIAGNOSTIC ONLY, no behaviour
 # change. Drive 10 (run 39970639716) stands as the
 # campaign's strangest artefact: 05-inside stands whole
 # in-app, drive 9's project + task standing ("Hello,
@@ -254,6 +254,28 @@ appId: shop.ilseplacencia.needsme
 # offers no typed-value proof (its bullets never enter the
 # tree), so the answer is volume: the spoken-line recovery now
 # stands TWICE at every password leg (v20).
+# DRIVE 20 (run 40019176451) died at the first leg's
+# door-gone wait, step-040, the spoken line standing and
+# the field empty — while 02-password-step proves the
+# first type landed WHOLE (twenty bullets). Convicted:
+# the recovery runFlows' one-shot whens, checked in the
+# same breath as the submit, before the app paints its
+# line — on slow drives every recovery stands down and
+# the fatal wait eats the whole window. Cure (v22):
+# before EVERY spoken-line recovery at all three legs, a
+# POLL runFlow (keyed on the submit button, which stands
+# only while the door stands) waits up to 10 s for that
+# recovery's line inside a runFlow — a timeout there is
+# swallowed by design, and the recovery's own when then
+# reads the SETTLED state. On the success path the button
+# is gone, so no poll ever runs.
+- runFlow:
+    when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Type your password first."
+          timeout: 10000
 - runFlow:
     when:
       visible: "Type your password first."
@@ -272,6 +294,13 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Type your password first."
+          timeout: 10000
 - runFlow:
     when:
       visible: "Type your password first."
@@ -298,6 +327,13 @@ appId: shop.ilseplacencia.needsme
 # erase-first) twice (v21).
 - runFlow:
     when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Your account could not load. Try again."
+          timeout: 10000
+- runFlow:
+    when:
       visible: "Your account could not load. Try again."
     commands:
       - tapOn:
@@ -305,6 +341,13 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Your account could not load. Try again."
+          timeout: 10000
 - runFlow:
     when:
       visible: "Your account could not load. Try again."
@@ -325,6 +368,13 @@ appId: shop.ilseplacencia.needsme
       - waitForAnimationToEnd
 - runFlow:
     when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Your account could not load. Try again."
+          timeout: 10000
+- runFlow:
+    when:
       visible: "Your account could not load. Try again."
     commands:
       - tapOn:
@@ -341,6 +391,13 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Email or password did not match."
+          timeout: 10000
 - runFlow:
     when:
       visible: "Email or password did not match."
@@ -640,22 +697,11 @@ appId: shop.ilseplacencia.needsme
 # settle, retype, dismiss, submit again.
 - runFlow:
     when:
-      visible: "Type your password first."
+      visible: "Join Needs Me"
     commands:
-      - tapOn:
-          text: "Password"
-          waitUntilVisible: true
-          retryTapIfNoChange: true
-      - waitForAnimationToEnd
-      - eraseText: 60
-      - inputText: "${TEST_PASSWORD}"
-      - tapOn:
-          point: "90%, 59%"
-      - tapOn:
-          text: "Join Needs Me"
-          waitUntilVisible: true
-          retryTapIfNoChange: true
-      - waitForAnimationToEnd
+      - extendedWaitUntil:
+          visible: "Type your password first."
+          timeout: 10000
 - runFlow:
     when:
       visible: "Type your password first."
@@ -676,6 +722,38 @@ appId: shop.ilseplacencia.needsme
       - waitForAnimationToEnd
 - runFlow:
     when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Type your password first."
+          timeout: 10000
+- runFlow:
+    when:
+      visible: "Type your password first."
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - eraseText: 60
+      - inputText: "${TEST_PASSWORD}"
+      - tapOn:
+          point: "90%, 59%"
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Your account could not load. Try again."
+          timeout: 10000
+- runFlow:
+    when:
       visible: "Your account could not load. Try again."
     commands:
       - tapOn:
@@ -683,6 +761,13 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Your account could not load. Try again."
+          timeout: 10000
 - runFlow:
     when:
       visible: "Your account could not load. Try again."
@@ -703,6 +788,13 @@ appId: shop.ilseplacencia.needsme
       - waitForAnimationToEnd
 - runFlow:
     when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Your account could not load. Try again."
+          timeout: 10000
+- runFlow:
+    when:
       visible: "Your account could not load. Try again."
     commands:
       - tapOn:
@@ -719,6 +811,13 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Email or password did not match."
+          timeout: 10000
 - runFlow:
     when:
       visible: "Email or password did not match."
@@ -891,22 +990,11 @@ appId: shop.ilseplacencia.needsme
 - waitForAnimationToEnd
 - runFlow:
     when:
-      visible: "Type your password first."
+      visible: "Join Needs Me"
     commands:
-      - tapOn:
-          text: "Password"
-          waitUntilVisible: true
-          retryTapIfNoChange: true
-      - waitForAnimationToEnd
-      - eraseText: 60
-      - inputText: "${TEST_PASSWORD2}"
-      - tapOn:
-          point: "90%, 59%"
-      - tapOn:
-          text: "Join Needs Me"
-          waitUntilVisible: true
-          retryTapIfNoChange: true
-      - waitForAnimationToEnd
+      - extendedWaitUntil:
+          visible: "Type your password first."
+          timeout: 10000
 - runFlow:
     when:
       visible: "Type your password first."
@@ -927,6 +1015,38 @@ appId: shop.ilseplacencia.needsme
       - waitForAnimationToEnd
 - runFlow:
     when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Type your password first."
+          timeout: 10000
+- runFlow:
+    when:
+      visible: "Type your password first."
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - eraseText: 60
+      - inputText: "${TEST_PASSWORD2}"
+      - tapOn:
+          point: "90%, 59%"
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Your account could not load. Try again."
+          timeout: 10000
+- runFlow:
+    when:
       visible: "Your account could not load. Try again."
     commands:
       - tapOn:
@@ -934,6 +1054,13 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Your account could not load. Try again."
+          timeout: 10000
 - runFlow:
     when:
       visible: "Your account could not load. Try again."
@@ -954,6 +1081,13 @@ appId: shop.ilseplacencia.needsme
       - waitForAnimationToEnd
 - runFlow:
     when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Your account could not load. Try again."
+          timeout: 10000
+- runFlow:
+    when:
       visible: "Your account could not load. Try again."
     commands:
       - tapOn:
@@ -970,6 +1104,13 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Join Needs Me"
+    commands:
+      - extendedWaitUntil:
+          visible: "Email or password did not match."
+          timeout: 10000
 - runFlow:
     when:
       visible: "Email or password did not match."
