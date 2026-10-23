@@ -1,4 +1,24 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v5 (2026-10-23) — v4 FAILED-UNCHARGED at drive 4 (run
+# 39950375065, step-018): the furthest any fleet drive has
+# travelled. The (90%, 59%) cure LANDED — 02 stands with the bar
+# dismissed and Join clear — the submit FIRED, and the app
+# answered in its own words: "Your account could not load. Try
+# again." QA's REST probe at the same hour proves the shape:
+# the account WAS created by that tap (createdAt 12:26:42Z,
+# uid wzsBCW…), its users doc STANDS and reads clean with the
+# account's own token — the create and the birth write landed;
+# only the door's post-auth LOAD inside the sim's cold first
+# session failed, and the door spoke honestly and left a clean
+# retryable state. Build 13 is NOT charged: its round trips on
+# this exact build loaded the same spaces at the browser
+# interior all night. v5 gives every Join leg the human's
+# answer to that line: two staggered conditional retries (the
+# door gone past them, they skip untouched; the line standing,
+# Join taps again — the second attempt a warm-channel
+# sign-in). The account of record now exists, so drive 5's
+# first leg is a sign-in by the door's one-button shape.
+# v4: 16,728 B.
 # Version: v4 (2026-10-23) — v3 FAILED-INSTRUMENT at drive 3 (run
 # 39947786297, step-018, the door-gone wait on "Explore the demo"):
 # BOTH v3 cures PROVED — the email landed (01 frame: typed +
@@ -108,6 +128,25 @@ appId: shop.ilseplacencia.needsme
     text: "Join Needs Me"
     waitUntilVisible: true
     retryTapIfNoChange: true
+- waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Your account could not load. Try again."
+    commands:
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Your account could not load. Try again."
+    commands:
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
 - extendedWaitUntil:
     notVisible:
       text: "Explore the demo"
@@ -290,6 +329,25 @@ appId: shop.ilseplacencia.needsme
     text: "Join Needs Me"
     waitUntilVisible: true
     retryTapIfNoChange: true
+- waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Your account could not load. Try again."
+    commands:
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Your account could not load. Try again."
+    commands:
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
 - extendedWaitUntil:
     notVisible:
       text: "Explore the demo"
@@ -370,6 +428,25 @@ appId: shop.ilseplacencia.needsme
     text: "Join Needs Me"
     waitUntilVisible: true
     retryTapIfNoChange: true
+- waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Your account could not load. Try again."
+    commands:
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Your account could not load. Try again."
+    commands:
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
 - extendedWaitUntil:
     notVisible:
       text: "Explore the demo"
