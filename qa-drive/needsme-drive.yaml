@@ -1,4 +1,19 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v12 (2026-10-24) — DIAGNOSTIC ONLY, no behaviour
+# change. Drive 10 (run 39970639716) stands as the
+# campaign's strangest artefact: 05-inside stands whole
+# in-app, drive 9's project + task standing ("Hello,
+# friend" · the task card with its Done · the project
+# below); the "Hello, friend" judge then PASSED — and frame
+# 06 is iOS SETTINGS (a blank pane, the "‹ NeedsMe Ai" back
+# link), the Siri pane by the step-029 failure ("Task
+# title"). No flow tap between the judge and 06 names a
+# Settings-bound control (the sidebar toggle and the
+# sidebar's home item only, both in-app on every prior
+# drive). Scored as an UNCOMMANDED EXIT, mechanism unproven
+# — NOT charged to build 13 on one occurrence; the
+# reproduction decides. v12 adds one frame (06a) at the
+# exact boundary so the next artefact discriminates.
 # Version: v11 (2026-10-24) — v10's PICK-ROW CURE LANDED
 # WHOLE on drive 9 (run 39965174253): the picker opened on
 # "Personal ›", the project was named, the task saved and
@@ -289,6 +304,13 @@ appId: shop.ilseplacencia.needsme
     visible:
       text: "Hello, friend"
     timeout: 60000
+# EXIT WATCH (drive 10, run 39970639716): between this judge
+# and the 06 frame, the foreground became iOS Settings (a
+# blank pane at 06, the Siri pane by the failure frame) with
+# NO flow tap in between that names a Settings-bound control.
+# 06a photographs the boundary exactly; drive 11's artefact
+# discriminates a repeat from a one-off.
+- takeScreenshot: 06a-after-home-tap
 - takeScreenshot: 06-home
 # The guide card's own button opens the task sheet (the b12 walk's
 # #guideAdd road; the FAB carries the same words as its label).
