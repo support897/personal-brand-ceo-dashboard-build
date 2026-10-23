@@ -224,6 +224,7 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+      - eraseText: 60
       - inputText: "${TEST_PASSWORD}"
       - tapOn:
           point: "90%, 59%"
@@ -236,6 +237,7 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+      - eraseText: 60
       - inputText: "${TEST_PASSWORD}"
       - tapOn:
           point: "90%, 59%"
@@ -254,6 +256,7 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+      - eraseText: 60
       - inputText: "${TEST_PASSWORD}"
       - tapOn:
           point: "90%, 59%"
@@ -275,6 +278,24 @@ appId: shop.ilseplacencia.needsme
     when:
       visible: "Your account could not load. Try again."
     commands:
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Email or password did not match."
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - eraseText: 60
+      - inputText: "${TEST_PASSWORD}"
+      - tapOn:
+          point: "90%, 59%"
       - tapOn:
           text: "Join Needs Me"
           waitUntilVisible: true
@@ -514,6 +535,7 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+      - eraseText: 60
       - inputText: "${TEST_PASSWORD}"
       - tapOn:
           point: "90%, 59%"
@@ -526,6 +548,7 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+      - eraseText: 60
       - inputText: "${TEST_PASSWORD}"
       - tapOn:
           point: "90%, 59%"
@@ -550,6 +573,7 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+      - eraseText: 60
       - inputText: "${TEST_PASSWORD}"
       - tapOn:
           point: "90%, 59%"
@@ -571,6 +595,24 @@ appId: shop.ilseplacencia.needsme
     when:
       visible: "Your account could not load. Try again."
     commands:
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Email or password did not match."
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - eraseText: 60
+      - inputText: "${TEST_PASSWORD}"
+      - tapOn:
+          point: "90%, 59%"
       - tapOn:
           text: "Join Needs Me"
           waitUntilVisible: true
@@ -684,6 +726,7 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+      - eraseText: 60
       - inputText: "${TEST_PASSWORD2}"
       - tapOn:
           point: "90%, 59%"
@@ -696,6 +739,7 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+      - eraseText: 60
       - inputText: "${TEST_PASSWORD2}"
       - tapOn:
           point: "90%, 59%"
@@ -713,6 +757,7 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+      - eraseText: 60
       - inputText: "${TEST_PASSWORD2}"
       - tapOn:
           point: "90%, 59%"
@@ -734,6 +779,24 @@ appId: shop.ilseplacencia.needsme
     when:
       visible: "Your account could not load. Try again."
     commands:
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Email or password did not match."
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - eraseText: 60
+      - inputText: "${TEST_PASSWORD2}"
+      - tapOn:
+          point: "90%, 59%"
       - tapOn:
           text: "Join Needs Me"
           waitUntilVisible: true
