@@ -467,9 +467,25 @@ appId: shop.ilseplacencia.needsme
 # Tick the task's to-do: the row's own button reads "Done" (the
 # b12 walk's tickDone road). Exactly one task stands in this
 # account, so the one "Done" in the list is the sentinel's.
+# DRIVE 17 (run 40009085931) + REST READ AT QA'S HAND: the
+# node tap executed and NO card flipped — and the account now
+# holds FIVE sentinel tasks (the create below ran on every
+# drive that reached it; every one reads status "needs_me",
+# done_date null — no tick has ever landed in this lane). The
+# tap therefore goes by POINT inside the first card's "Done"
+# pill, measured from drive 17's own 12-ticked frame (pill at
+# x 8-26%, y 27-30% of screen), and a result-keyed retry fires
+# the same point while "Put back" does not stand anywhere.
 - tapOn:
-    text: "Done"
-    waitUntilVisible: true
+    point: "17%, 28%"
+- waitForAnimationToEnd
+- runFlow:
+    when:
+      notVisible: "Put back"
+    commands:
+      - tapOn:
+          point: "17%, 28%"
+      - waitForAnimationToEnd
 - takeScreenshot: 12-ticked
 # ---------- stage (iii): sign out through the app's own control ----
 # The sidebar itself carries the sign-out (the b12 walk's sidebar
@@ -652,12 +668,34 @@ appId: shop.ilseplacencia.needsme
 # match it (full-node matching, eighth conviction).
 - tapOn:
     text: "Hide or show the sidebar"
-- tapOn:
-    text: "Sim drive NM project 0%"
-    waitUntilVisible: true
+# The row's composed text carries the progress, which the
+# tick itself moves: 0% while nothing is ticked, 20% with one
+# of the five standing tasks ticked. Both forms are tapped
+# conditionally; the judges below decide what actually stands.
+- runFlow:
+    when:
+      visible: "Sim drive NM project 20%"
+    commands:
+      - tapOn:
+          text: "Sim drive NM project 20%"
+          waitUntilVisible: true
+- runFlow:
+    when:
+      visible: "Sim drive NM project 0%"
+    commands:
+      - tapOn:
+          text: "Sim drive NM project 0%"
+          waitUntilVisible: true
+# DRIVE 17 died at this wait, step-108: on the PROJECT page the
+# card's node COMPOSES title + tag + date ("Sim drive NM task
+# the app Fri, 23 Oct 2026 \u25be", read from the failure
+# hierarchy itself) — the bare title can never match it
+# (full-node matching). The composed node is the judge; its
+# date is the standing tasks' creation date, re-keyed from the
+# run's own 11-task-stands frame on any fresh-account run.
 - extendedWaitUntil:
     visible:
-      text: "Sim drive NM task"
+      text: "Sim drive NM task the app Fri, 23 Oct 2026 \u25be"
     timeout: 60000
 - assertVisible:
     text: "Put back"
