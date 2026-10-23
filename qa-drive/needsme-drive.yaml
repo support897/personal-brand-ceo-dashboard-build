@@ -1,0 +1,407 @@
+# NeedsMe 13 simulator drive — QA Tester chair.
+# The FINISHING ORDER spine for candidate 13's simulator copy
+# (bundle shop.ilseplacencia.needsme, version 1.0, build 13, IPA
+# sha256 c331deec; the copy's byte-leg pins stand in
+# store-uploads/scratch/needsme-sim/PINS.md). Spine: sign up ->
+# the tour's name under the sentinel -> the real journey (a project
+# created in the task sheet + the sentinel task saved under it +
+# its to-do ticked) -> sign out -> sign in -> the name, the
+# project, the task and the tick all stand -> a SECOND account
+# whose space holds none of it.
+# Structural template: pace-drive.yaml v2 + mealprep-drive.yaml +
+# fit-drive.yaml — every tap waits until its target is visible;
+# sheets are waited for, handled, and proven gone before anything
+# behind them is touched.
+# TEST_EMAIL / TEST_PASSWORD / TEST_EMAIL2 / TEST_PASSWORD2 arrive
+# as workflow env at dispatch (passwords from QA's mode-600 cast,
+# sealed the Pace way); the values never appear in this file or
+# the repo. NOTE: Maestro's commands.json records env values in
+# plaintext — the workflow's collect step must NOT upload
+# commands.json (the Pace v1 lesson; see pace-drive.yaml +
+# ios-sim-drive.yml).
+# Selector provenance for every string below: needsme-drive-NOTES.md.
+appId: shop.ilseplacencia.needsme
+---
+# ---------- cold open: the door stands alone (purity) -------------
+# A pristine signed-out boot stands on the v4 door: the mark, the
+# icon-only provider pair, the email step, and the demo line at the
+# foot (the b13 verdict's DOOR PURITY walk). The demo line is the
+# door's own standing marker in both steps — the b12 walk's
+# door-return read used the same line.
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      text: "Explore the demo"
+    timeout: 90000
+- takeScreenshot: 00-door
+# ---------- stage (i): sign up, account 1 (email step, then -------
+# ---------- password step; the one button does both) --------------
+- tapOn:
+    text: "you@example.com"
+    waitUntilVisible: true
+- inputText: "${TEST_EMAIL}"
+- hideKeyboard
+- takeScreenshot: 01-email-step
+- tapOn:
+    text: "Next"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    visible:
+      text: "Your password"
+    timeout: 60000
+- tapOn:
+    text: "Password"
+    waitUntilVisible: true
+- inputText: "${TEST_PASSWORD}"
+- hideKeyboard
+- takeScreenshot: 02-password-step
+- tapOn:
+    text: "Join Needs Me"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    notVisible:
+      text: "Explore the demo"
+    timeout: 90000
+# ---------- first entry: the mascot tour asks the name ------------
+# The tour's first stop is the name ask; typing the sentinel and
+# tapping Next saves it to the profile before the tour advances
+# (the shipped Vr()/ko() path). Seven stops stand in shipped
+# order: name -> menu -> home -> tasks -> calendar -> updates ->
+# account; the button reads "Next →" on the first six and
+# "Done ✓" on the last.
+- extendedWaitUntil:
+    visible:
+      text: "What's your name?"
+    timeout: 60000
+- tapOn:
+    text: "Your name"
+    waitUntilVisible: true
+- inputText: "Sim Driver NM"
+- hideKeyboard
+- takeScreenshot: 03-tour-name
+- tapOn:
+    text: "Next →"
+    waitUntilVisible: true
+- tapOn:
+    text: "Next →"
+    waitUntilVisible: true
+- tapOn:
+    text: "Next →"
+    waitUntilVisible: true
+- tapOn:
+    text: "Next →"
+    waitUntilVisible: true
+- tapOn:
+    text: "Next →"
+    waitUntilVisible: true
+- tapOn:
+    text: "Next →"
+    waitUntilVisible: true
+- tapOn:
+    text: "Done ✓"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    notVisible:
+      text: "That's the tour!"
+    timeout: 30000
+- takeScreenshot: 04-tour-done
+# The tour's last stop lands the app on the Account page, whose
+# identity line carries the name the tour just saved (the b12
+# walk's own landing read: "Signed in as QA Twelve · <email>").
+- assertVisible:
+    text: "Sim Driver NM"
+- takeScreenshot: 05-account-name
+# ---------- stage (ii): the journey — a project + its task ---------
+# Home first, through the sidebar (the shell's list item for the
+# home view reads "Needs Me", under the MY LIST group).
+- tapOn:
+    id: "menuBtn"
+- tapOn:
+    text: "Needs Me"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    visible:
+      text: "Hello, Sim Driver NM"
+    timeout: 60000
+- takeScreenshot: 06-home
+# The guide card's own button opens the task sheet (the b12 walk's
+# #guideAdd road; the FAB carries the same words as its label).
+- tapOn:
+    text: "Add a task"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    visible:
+      text: "Task title"
+    timeout: 30000
+- takeScreenshot: 07-sheet
+- tapOn:
+    text: "Task title"
+    waitUntilVisible: true
+- inputText: "Sim drive NM task"
+- hideKeyboard
+- takeScreenshot: 08-task-typed
+# The Project pick-row: its standing value on a fresh sheet is the
+# default project "Personal" (the first of the shipped list);
+# tapping the row opens the pick list, whose foot carries the
+# new-project road (the b12 walk's picker read, in shipped texts).
+- tapOn:
+    text: "Personal"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    visible:
+      text: "+ New project"
+    timeout: 30000
+- takeScreenshot: 09-picker
+- tapOn:
+    text: "+ New project"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    visible:
+      text: "Name your project"
+    timeout: 30000
+- tapOn:
+    text: "Project name"
+    waitUntilVisible: true
+- inputText: "Sim drive NM project"
+- hideKeyboard
+- takeScreenshot: 10-project-named
+- tapOn:
+    text: "Start project"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    notVisible:
+      text: "Name your project"
+    timeout: 30000
+- tapOn:
+    text: "Save"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    notVisible:
+      text: "Task title"
+    timeout: 60000
+# The task stands in Start Here (the account holds exactly one
+# task, so the standing row is the sentinel's own). The wait is
+# long on purpose: the b12 walk's one-shot innerText polls read
+# stands:false where REST proved the saves — the poll, not the
+# save, was the liar (the b13 verdict's recorded caveat).
+- extendedWaitUntil:
+    visible:
+      text: "Sim drive NM task"
+    timeout: 60000
+- takeScreenshot: 11-task-stands
+# Tick the task's to-do: the row's own button reads "Done" (the
+# b12 walk's tickDone road). Exactly one task stands in this
+# account, so the one "Done" in the list is the sentinel's.
+- tapOn:
+    text: "Done"
+    waitUntilVisible: true
+- takeScreenshot: 12-ticked
+# ---------- stage (iii): sign out through the app's own control ----
+# The sidebar itself carries the sign-out (the b12 walk's sidebar
+# census: ... PROJECTS ... MORE ▸ Sign out).
+- tapOn:
+    id: "menuBtn"
+- tapOn:
+    text: "Sign out"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    visible:
+      text: "Explore the demo"
+    timeout: 60000
+- takeScreenshot: 13-signed-out
+# ---------- stage (iv): sign in again — everything stands ----------
+- tapOn:
+    text: "you@example.com"
+    waitUntilVisible: true
+- inputText: "${TEST_EMAIL}"
+- hideKeyboard
+- tapOn:
+    text: "Next"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    visible:
+      text: "Your password"
+    timeout: 60000
+- tapOn:
+    text: "Password"
+    waitUntilVisible: true
+- inputText: "${TEST_PASSWORD}"
+- hideKeyboard
+- tapOn:
+    text: "Join Needs Me"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    notVisible:
+      text: "Explore the demo"
+    timeout: 90000
+# The tour state is saved with the account, so no tour is
+# expected; it is still handled if it stands.
+- runFlow:
+    when:
+      visible: "Skip tour"
+    commands:
+      - tapOn:
+          text: "Skip tour"
+          waitUntilVisible: true
+- takeScreenshot: 14-relogin-inside
+- tapOn:
+    id: "menuBtn"
+- tapOn:
+    text: "Needs Me"
+    waitUntilVisible: true
+# The name stands: Home greets the account by its own name (the
+# b12 walk's persistence read: "Hello, QA Twelve").
+- extendedWaitUntil:
+    visible:
+      text: "Hello, Sim Driver NM"
+    timeout: 60000
+- takeScreenshot: 15-relogin-name
+# The project stands in the sidebar's PROJECTS group; its page
+# carries the task, and the tick stands with it: a done row's
+# button reads "Put back", not "Done".
+- tapOn:
+    id: "menuBtn"
+- tapOn:
+    text: "Sim drive NM project"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    visible:
+      text: "Sim drive NM task"
+    timeout: 60000
+- assertVisible:
+    text: "Put back"
+- takeScreenshot: 16-relogin-project
+# ---------- sign out again ------------------------------------------
+- tapOn:
+    id: "menuBtn"
+- tapOn:
+    text: "Sign out"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    visible:
+      text: "Explore the demo"
+    timeout: 60000
+- takeScreenshot: 17-signed-out-again
+# ---------- stage (v): the second account — isolation --------------
+- tapOn:
+    text: "you@example.com"
+    waitUntilVisible: true
+- inputText: "${TEST_EMAIL2}"
+- hideKeyboard
+- tapOn:
+    text: "Next"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    visible:
+      text: "Your password"
+    timeout: 60000
+- tapOn:
+    text: "Password"
+    waitUntilVisible: true
+- inputText: "${TEST_PASSWORD2}"
+- hideKeyboard
+- tapOn:
+    text: "Join Needs Me"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    notVisible:
+      text: "Explore the demo"
+    timeout: 90000
+- extendedWaitUntil:
+    visible:
+      text: "What's your name?"
+    timeout: 60000
+- tapOn:
+    text: "Your name"
+    waitUntilVisible: true
+- inputText: "Second Driver NM"
+- hideKeyboard
+- tapOn:
+    text: "Next →"
+    waitUntilVisible: true
+- tapOn:
+    text: "Next →"
+    waitUntilVisible: true
+- tapOn:
+    text: "Next →"
+    waitUntilVisible: true
+- tapOn:
+    text: "Next →"
+    waitUntilVisible: true
+- tapOn:
+    text: "Next →"
+    waitUntilVisible: true
+- tapOn:
+    text: "Next →"
+    waitUntilVisible: true
+- tapOn:
+    text: "Done ✓"
+    waitUntilVisible: true
+- extendedWaitUntil:
+    notVisible:
+      text: "That's the tour!"
+    timeout: 30000
+- takeScreenshot: 18-second-account-in
+- tapOn:
+    id: "menuBtn"
+- tapOn:
+    text: "Needs Me"
+    waitUntilVisible: true
+# Isolation, name + task side: this space greets its own name;
+# the first account's sentinel name and task never render here.
+- extendedWaitUntil:
+    visible:
+      text: "Hello, Second Driver NM"
+    timeout: 60000
+- assertNotVisible:
+    text: "Sim Driver NM"
+- assertNotVisible:
+    text: "Sim drive NM task"
+- takeScreenshot: 19-isolation-home
+- tapOn:
+    id: "menuBtn"
+# Isolation, project side: the first account's project never
+# renders in this account's sidebar PROJECTS group.
+- assertNotVisible:
+    text: "Sim drive NM project"
+- takeScreenshot: 20-isolation-menu
+# ---------- stage (vi): the delete leg is NOT in this flow ---------
+# Per the registered spine shape, deletion runs from QA's chair
+# against the real backend, not in Maestro — and on THIS build it
+# carries the F-NM13-1 scoping, written exactly:
+#
+# The spine accounts NEVER mint or hold a Connect token inside
+# this drive, and the flow never visits the Connect surface.
+# Their delete leg therefore runs the leg-4A shape — a
+# NON-token-holder's delete, proven PASS on 13's bytes in the
+# full §4i form (verdict-needsme-b13-retest.md, DELETE LEG leg
+# 4A): the app's own flow (Account -> "Delete my account" -> the
+# #delConfirm sheet spelling out the loss -> the password
+# re-auth -> "Deleting…" -> the door reading "Your account has
+# been deleted."), driven from QA's harness, with the close read
+# beside this drive's SIMULATOR results: the REST sign-in after
+# refused (INVALID_LOGIN_CREDENTIALS), rejoining on the same
+# email minting a NEW uid, and the owner-side full-footprint
+# read — users/{uid} + its 14 subcollections (tasks · updates ·
+# events · goals · projects · workers · workerStatus ·
+# workerResearch · workerExperiments · workerDeliverables ·
+# workerRollups · reminderSends · connectTray · appearance) +
+# users/{uid}/connectTokens + the uid's _connectIndex entries +
+# _entitlements/{uid} — at 404, the fleet's delete-verification
+# standard, the entitlement record included by Security's ruling.
+#
+# The access state is NAMED, never assumed: no owner-side
+# credential for project needs-me-480ea exists at QA's chair
+# (proven negative, the residue audit's record), so the
+# owner-side read-back is SITTING-GATED on the parked custody
+# sitting and is reported with that state until the sitting
+# lands.
+#
+# F-NM13-1 (a Connect token-holder's delete aborts — the
+# connect-sweep route was never merged; the shipped bytes abort
+# honestly on "We could not finish deleting. Nothing was
+# deleted. Try again.") is NOT exercised here: the flow does not
+# test the fault by minting a token. Its re-walk rides PB's
+# production-publish signal, separately, on the walk-1 repro
+# account left alive for exactly that purpose at the Test chair.
