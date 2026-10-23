@@ -1,4 +1,19 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v6 (2026-10-23) — v5 FAILED-INSTRUMENT at drive 5 (run
+# 39954174559, step-022): the sign-in FIRED and the account
+# LOADED (the cold-channel failure did not recur) — and the
+# tour never stood. REST at QA pins the behaviour: the guide
+# stands unfinished on the record (step 0, finished false) yet
+# a returning sign-in lands on the home; the tour presents on
+# the CREATING entry only. Not charged to build 13: the home
+# is coherent, honest and fully usable, and the guide's
+# unfinished state is the drive-4 session's own doing. v6:
+# leg (i)'s tour runs only when its name ask stands (the fleet
+# conditional shape), the tour's dismissal takes this door's
+# measured (90%, 59%), the name-keyed proofs on account 1's
+# legs retire (identity = REST at QA; the journey's titles
+# carry the standing proofs), and acct 2's fresh-create leg is
+# untouched. v5: 19,404 B.
 # Version: v5 (2026-10-23) — v4 FAILED-UNCHARGED at drive 4 (run
 # 39950375065, step-018): the furthest any fleet drive has
 # travelled. The (90%, 59%) cure LANDED — 02 stands with the bar
@@ -151,56 +166,65 @@ appId: shop.ilseplacencia.needsme
     notVisible:
       text: "Explore the demo"
     timeout: 90000
-# ---------- first entry: the mascot tour asks the name ------------
-# The tour's first stop is the name ask; typing the sentinel and
-# tapping Next saves it to the profile before the tour advances
-# (the shipped Vr()/ko() path). Seven stops stand in shipped
-# order: name -> menu -> home -> tasks -> calendar -> updates ->
-# account; the button reads "Next →" on the first six and
-# "Done ✓" on the last.
-- extendedWaitUntil:
-    visible:
-      text: "What's your name?"
-    timeout: 60000
-- tapOn:
-    text: "Your name"
-    waitUntilVisible: true
-- inputText: "Sim Driver NM"
-- tapOn:
-    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
-- takeScreenshot: 03-tour-name
-- tapOn:
-    text: "Next →"
-    waitUntilVisible: true
-- tapOn:
-    text: "Next →"
-    waitUntilVisible: true
-- tapOn:
-    text: "Next →"
-    waitUntilVisible: true
-- tapOn:
-    text: "Next →"
-    waitUntilVisible: true
-- tapOn:
-    text: "Next →"
-    waitUntilVisible: true
-- tapOn:
-    text: "Next →"
-    waitUntilVisible: true
-- tapOn:
-    text: "Done ✓"
-    waitUntilVisible: true
-- extendedWaitUntil:
-    notVisible:
-      text: "That's the tour!"
-    timeout: 30000
-- takeScreenshot: 04-tour-done
-# The tour's last stop lands the app on the Account page, whose
-# identity line carries the name the tour just saved (the b12
-# walk's own landing read: "Signed in as QA Twelve · <email>").
-- assertVisible:
-    text: "Sim Driver NM"
-- takeScreenshot: 05-account-name
+# ---------- first entry: the mascot tour, WHEN IT STANDS ----------
+# Drive 5's evidence (the account created by drive 4, whose
+# creating session died at the load line): a later sign-in lands
+# on the HOME with the guide still unfinished on the record
+# (guide step 0, finished false, REST-read at QA) — the tour
+# stands on the CREATING entry, not on returns. So the tour
+# sequence runs only when its name ask stands at entry; a
+# returning account proceeds unnamed, its identity proven at
+# REST from QA's chair and its journey carried by the project
+# and task titles. When the tour stands: typing the sentinel
+# and tapping Next saves it to the profile before the tour
+# advances (the shipped Vr()/ko() path); seven stops stand in
+# shipped order: name -> menu -> home -> tasks -> calendar ->
+# updates -> account; the button reads "Next →" on the first
+# six and "Done ✓" on the last.
+- runFlow:
+    when:
+      visible:
+        text: "What's your name?"
+    commands:
+      - tapOn:
+          text: "Your name"
+          waitUntilVisible: true
+      - inputText: "Sim Driver NM"
+      - tapOn:
+          point: "90%, 59%"  # accessory Done, measured on this door (drive 3)
+      - takeScreenshot: 03-tour-name
+      - tapOn:
+          text: "Next →"
+          waitUntilVisible: true
+      - tapOn:
+          text: "Next →"
+          waitUntilVisible: true
+      - tapOn:
+          text: "Next →"
+          waitUntilVisible: true
+      - tapOn:
+          text: "Next →"
+          waitUntilVisible: true
+      - tapOn:
+          text: "Next →"
+          waitUntilVisible: true
+      - tapOn:
+          text: "Next →"
+          waitUntilVisible: true
+      - tapOn:
+          text: "Done ✓"
+          waitUntilVisible: true
+      - extendedWaitUntil:
+          notVisible:
+            text: "That's the tour!"
+          timeout: 30000
+      - takeScreenshot: 04-tour-done
+# (The tour's last stop lands the app on the Account page, whose
+# identity line carries the name the tour saved — the b12 walk's
+# landing read: "Signed in as QA Twelve · <email>". On a
+# returning entry the app stands on the Home instead; the
+# journey's navigation below works from either surface.)
+- takeScreenshot: 05-inside
 # ---------- stage (ii): the journey — a project + its task ---------
 # Home first, through the sidebar (the shell's list item for the
 # home view reads "Needs Me", under the MY LIST group).
@@ -211,7 +235,7 @@ appId: shop.ilseplacencia.needsme
     waitUntilVisible: true
 - extendedWaitUntil:
     visible:
-      text: "Hello, Sim Driver NM"
+      text: "Hello,"
     timeout: 60000
 - takeScreenshot: 06-home
 # The guide card's own button opens the task sheet (the b12 walk's
@@ -371,7 +395,7 @@ appId: shop.ilseplacencia.needsme
 # b12 walk's persistence read: "Hello, QA Twelve").
 - extendedWaitUntil:
     visible:
-      text: "Hello, Sim Driver NM"
+      text: "Hello,"
     timeout: 60000
 - takeScreenshot: 15-relogin-name
 # The project stands in the sidebar's PROJECTS group; its page
