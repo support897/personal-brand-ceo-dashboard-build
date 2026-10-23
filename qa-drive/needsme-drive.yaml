@@ -413,19 +413,27 @@ appId: shop.ilseplacencia.needsme
     timeout: 60000
 - takeScreenshot: 13-signed-out
 # ---------- stage (iv): sign in again — everything stands ----------
-- tapOn:
-    text: "you@example.com"
-    waitUntilVisible: true
-    retryTapIfNoChange: true
-- waitForAnimationToEnd
-- inputText: "${TEST_EMAIL}"
-- extendedWaitUntil:
-    visible:
-      text: "${TEST_EMAIL}"
-    timeout: 15000
-- tapOn:
-    text: "Next"
-    waitUntilVisible: true
+# Drive 11's read: on a return within the session the door REMEMBERS
+# the address and lands straight on the password step (the address
+# standing as a line, with a "Change" link) — the email segment runs
+# only when the field itself stands.
+- runFlow:
+    when:
+      visible: "you@example.com"
+    commands:
+      - tapOn:
+          text: "you@example.com"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - inputText: "${TEST_EMAIL}"
+      - extendedWaitUntil:
+          visible:
+            text: "${TEST_EMAIL}"
+          timeout: 15000
+      - tapOn:
+          text: "Next"
+          waitUntilVisible: true
 - extendedWaitUntil:
     visible:
       text: "Your password"
@@ -512,6 +520,16 @@ appId: shop.ilseplacencia.needsme
     timeout: 60000
 - takeScreenshot: 17-signed-out-again
 # ---------- stage (v): the second account — isolation --------------
+# The door may stand on account 1's remembered address (drive 11's
+# shape): "Change" returns it to the email step before typing.
+- runFlow:
+    when:
+      visible: "Change"
+    commands:
+      - tapOn:
+          text: "Change"
+          waitUntilVisible: true
+      - waitForAnimationToEnd
 - tapOn:
     text: "you@example.com"
     waitUntilVisible: true
