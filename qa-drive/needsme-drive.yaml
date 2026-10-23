@@ -495,11 +495,14 @@ appId: shop.ilseplacencia.needsme
 - takeScreenshot: 15-relogin-name
 # The project stands in the sidebar's PROJECTS group; its page
 # carries the task, and the tick stands with it: a done row's
-# button reads "Put back", not "Done".
+# button reads "Put back", not "Done". The sidebar row's node
+# COMPOSES name + progress (drive 12's step-077 hierarchy reads
+# "Sim drive NM project 0%" whole) — the bare name can never
+# match it (full-node matching, eighth conviction).
 - tapOn:
     text: "Hide or show the sidebar"
 - tapOn:
-    text: "Sim drive NM project"
+    text: "Sim drive NM project 0%"
     waitUntilVisible: true
 - extendedWaitUntil:
     visible:
