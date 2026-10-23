@@ -449,6 +449,30 @@ appId: shop.ilseplacencia.needsme
     waitUntilVisible: true
     retryTapIfNoChange: true
 - waitForAnimationToEnd
+# Drive 13 (run 39982344661): this leg's type raced into nothing
+# — the failure frame stands on the door with the field EMPTY
+# and the app's own hint "Type your password first." standing;
+# the submit fired empty and the door-gone judge below died.
+# Recovery keyed on the door's spoken line (the FATAL-PROOF law:
+# the recovery acts, the judge below decides): re-tap the field,
+# settle, retype, dismiss, submit again.
+- runFlow:
+    when:
+      visible: "Type your password first."
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - inputText: "${TEST_PASSWORD}"
+      - tapOn:
+          point: "90%, 59%"
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
 - runFlow:
     when:
       visible: "Your account could not load. Try again."
