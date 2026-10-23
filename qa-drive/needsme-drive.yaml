@@ -247,6 +247,31 @@ appId: shop.ilseplacencia.needsme
     waitUntilVisible: true
     retryTapIfNoChange: true
 - waitForAnimationToEnd
+# DRIVE 18 (run 40012926486) died at the FIRST leg's door-gone
+# wait, step-038: the race won three straight attempts (the
+# type, the placeholder retype, the recovery's retype) and the
+# field stood empty with the spoken line up. The secure field
+# offers no typed-value proof (its bullets never enter the
+# tree), so the answer is volume: the spoken-line recovery now
+# stands TWICE at every password leg (v20).
+- runFlow:
+    when:
+      visible: "Type your password first."
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - eraseText: 60
+      - inputText: "${TEST_PASSWORD}"
+      - tapOn:
+          point: "90%, 59%"
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
 - runFlow:
     when:
       visible: "Type your password first."
@@ -600,6 +625,24 @@ appId: shop.ilseplacencia.needsme
       - waitForAnimationToEnd
 - runFlow:
     when:
+      visible: "Type your password first."
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - eraseText: 60
+      - inputText: "${TEST_PASSWORD}"
+      - tapOn:
+          point: "90%, 59%"
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
       visible: "Your account could not load. Try again."
     commands:
       - tapOn:
@@ -786,6 +829,24 @@ appId: shop.ilseplacencia.needsme
     waitUntilVisible: true
     retryTapIfNoChange: true
 - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Type your password first."
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - eraseText: 60
+      - inputText: "${TEST_PASSWORD2}"
+      - tapOn:
+          point: "90%, 59%"
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
 - runFlow:
     when:
       visible: "Type your password first."
