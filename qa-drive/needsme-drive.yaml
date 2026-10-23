@@ -1,4 +1,30 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v3 (2026-10-23) — v2 FAILED-INSTRUMENT at drive 2 (run
+# 39944972026, step-011 assert "Your password"): TWO instrument
+# faults compounded. (1) THE FOCUS RACE (the Fit class): the email
+# inputText never landed — the failure frame shows the placeholder
+# standing and the tester's address ZERO times in the hierarchy.
+# (2) THE CURE'S OWN HAZARD, realised: with no keyboard standing,
+# the accessory-Done point tap (90%, 62%) fired onto LIVE page
+# content — on this door that point sits INSIDE the advance arrow's
+# own bounds ([311,509][373,572]pt) — so the tap advanced an EMPTY
+# field and the app answered honestly, in frame: "That doesn't
+# look like an email address." (The app is acquitted by its own
+# spoken line; build 13 not charged.) v3 cures: (a) all three door
+# email legs gain the focus-race hardening (retryTapIfNoChange on
+# the field tap + waitForAnimationToEnd) AND a landing proof — an
+# extendedWaitUntil on the typed address itself before any advance
+# is attempted, so a silent miss names itself at its own step;
+# (b) the accessory point tap is REMOVED from the door email legs
+# (the arrow stands reachable above the keyboard on this door —
+# drive 1's frame — and the advance tap now does its own work);
+# the 7 deeper point taps (password steps · tour · task ·
+# project) stand unjudged and flagged: their pages' geometry at
+# that point is unmeasured, and the spine judges them in order.
+# CLASS LAW AMENDED: a dismissal point tap is lawful only where
+# the keyboard is PROVEN standing by the leg's construction (text
+# landed, proof read) — never as a reflex after inputText.
+# v2: 13,554 B / 120 commands.
 # The FINISHING ORDER spine for candidate 13's simulator copy
 # (bundle shop.ilseplacencia.needsme, version 1.0, build 13, IPA
 # sha256 c331deec; the copy's byte-leg pins stand in
@@ -40,9 +66,13 @@ appId: shop.ilseplacencia.needsme
 - tapOn:
     text: "you@example.com"
     waitUntilVisible: true
+    retryTapIfNoChange: true
+- waitForAnimationToEnd
 - inputText: "${TEST_EMAIL}"
-- tapOn:
-    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
+- extendedWaitUntil:
+    visible:
+      text: "${TEST_EMAIL}"
+    timeout: 15000
 - takeScreenshot: 01-email-step
 - tapOn:
     text: "Next"
@@ -219,9 +249,13 @@ appId: shop.ilseplacencia.needsme
 - tapOn:
     text: "you@example.com"
     waitUntilVisible: true
+    retryTapIfNoChange: true
+- waitForAnimationToEnd
 - inputText: "${TEST_EMAIL}"
-- tapOn:
-    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
+- extendedWaitUntil:
+    visible:
+      text: "${TEST_EMAIL}"
+    timeout: 15000
 - tapOn:
     text: "Next"
     waitUntilVisible: true
@@ -294,9 +328,13 @@ appId: shop.ilseplacencia.needsme
 - tapOn:
     text: "you@example.com"
     waitUntilVisible: true
+    retryTapIfNoChange: true
+- waitForAnimationToEnd
 - inputText: "${TEST_EMAIL2}"
-- tapOn:
-    point: "90%, 62%"  # WKWebView accessory Done (hideKeyboard class cure)
+- extendedWaitUntil:
+    visible:
+      text: "${TEST_EMAIL2}"
+    timeout: 15000
 - tapOn:
     text: "Next"
     waitUntilVisible: true
