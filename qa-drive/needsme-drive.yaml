@@ -202,9 +202,43 @@ appId: shop.ilseplacencia.needsme
 - tapOn:
     text: "Password"
     waitUntilVisible: true
+- waitForAnimationToEnd
 - inputText: "${TEST_PASSWORD}"
 - tapOn:
     point: "90%, 59%"  # accessory Done, CENTRE MEASURED on drive 3 (bar overlays Join; v3s 62% missed the tick by ~26pt and the bar ate the submit)
+# DRIVE 15 (run 39988939774) died at the door-gone wait after
+# this leg: the type raced into an unsettled field and was
+# lost, the submit spoke "Type your password first.", and the
+# spoken-line recovery behind the submit did not rescue it.
+# The field's own placeholder is the landing proof: while
+# "Password" still stands as a node, the field is EMPTY (a
+# filled secure field reads as bullets, never the placeholder).
+# Retype BEFORE any submit, staggered twice; the spoken-line
+# recovery behind the submit stays as the second net.
+- runFlow:
+    when:
+      visible: "Password"
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - inputText: "${TEST_PASSWORD}"
+      - tapOn:
+          point: "90%, 59%"
+- runFlow:
+    when:
+      visible: "Password"
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - inputText: "${TEST_PASSWORD}"
+      - tapOn:
+          point: "90%, 59%"
 - takeScreenshot: 02-password-step
 - tapOn:
     text: "Join Needs Me"
@@ -458,9 +492,43 @@ appId: shop.ilseplacencia.needsme
 - tapOn:
     text: "Password"
     waitUntilVisible: true
+- waitForAnimationToEnd
 - inputText: "${TEST_PASSWORD}"
 - tapOn:
     point: "90%, 59%"  # accessory Done, CENTRE MEASURED on drive 3 (bar overlays Join; v3s 62% missed the tick by ~26pt and the bar ate the submit)
+# DRIVE 15 (run 39988939774) died at the door-gone wait after
+# this leg: the type raced into an unsettled field and was
+# lost, the submit spoke "Type your password first.", and the
+# spoken-line recovery behind the submit did not rescue it.
+# The field's own placeholder is the landing proof: while
+# "Password" still stands as a node, the field is EMPTY (a
+# filled secure field reads as bullets, never the placeholder).
+# Retype BEFORE any submit, staggered twice; the spoken-line
+# recovery behind the submit stays as the second net.
+- runFlow:
+    when:
+      visible: "Password"
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - inputText: "${TEST_PASSWORD}"
+      - tapOn:
+          point: "90%, 59%"
+- runFlow:
+    when:
+      visible: "Password"
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - inputText: "${TEST_PASSWORD}"
+      - tapOn:
+          point: "90%, 59%"
 - tapOn:
     text: "Join Needs Me"
     waitUntilVisible: true
@@ -594,9 +662,43 @@ appId: shop.ilseplacencia.needsme
 - tapOn:
     text: "Password"
     waitUntilVisible: true
+- waitForAnimationToEnd
 - inputText: "${TEST_PASSWORD2}"
 - tapOn:
     point: "90%, 59%"  # accessory Done, CENTRE MEASURED on drive 3 (bar overlays Join; v3s 62% missed the tick by ~26pt and the bar ate the submit)
+# DRIVE 15 (run 39988939774) died at the door-gone wait after
+# this leg: the type raced into an unsettled field and was
+# lost, the submit spoke "Type your password first.", and the
+# spoken-line recovery behind the submit did not rescue it.
+# The field's own placeholder is the landing proof: while
+# "Password" still stands as a node, the field is EMPTY (a
+# filled secure field reads as bullets, never the placeholder).
+# Retype BEFORE any submit, staggered twice; the spoken-line
+# recovery behind the submit stays as the second net.
+- runFlow:
+    when:
+      visible: "Password"
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - inputText: "${TEST_PASSWORD2}"
+      - tapOn:
+          point: "90%, 59%"
+- runFlow:
+    when:
+      visible: "Password"
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - inputText: "${TEST_PASSWORD2}"
+      - tapOn:
+          point: "90%, 59%"
 - tapOn:
     text: "Join Needs Me"
     waitUntilVisible: true
