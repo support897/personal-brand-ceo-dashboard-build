@@ -1,4 +1,16 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v9 (2026-10-23) — v8's SIDEBAR CURE LANDED on
+# drive 7 (run 39959660252): the sidebar stands open in the
+# failure frame on the tree-name tap. Death at step-026, the
+# journey's first greeting proof — v6's generalised "Hello,"
+# fragment, judged for the first time tonight (drives 5 and 6
+# died before reaching it): the step-026 hierarchy holds the
+# greeting as ONE node, "Hello, friend" (the account's name
+# was never set; the tour never completed). FULL-NODE law,
+# fourth conviction. v9 completes both greeting waits to the
+# node's whole text. If a future drive ever sets the tour
+# name in-drive, the greeting changes with it — that drive's
+# evidence, not tonight's guess.
 # Version: v8 (2026-10-23) — carries v7 whole (Pip's complete
 # heading; NM6 pre-dated it) PLUS the sidebar cure from drive
 # 6 (run 39957003510, step-024): v6's design travelled CLEAN —
@@ -252,7 +264,7 @@ appId: shop.ilseplacencia.needsme
     waitUntilVisible: true
 - extendedWaitUntil:
     visible:
-      text: "Hello,"
+      text: "Hello, friend"
     timeout: 60000
 - takeScreenshot: 06-home
 # The guide card's own button opens the task sheet (the b12 walk's
@@ -412,7 +424,7 @@ appId: shop.ilseplacencia.needsme
 # b12 walk's persistence read: "Hello, QA Twelve").
 - extendedWaitUntil:
     visible:
-      text: "Hello,"
+      text: "Hello, friend"
     timeout: 60000
 - takeScreenshot: 15-relogin-name
 # The project stands in the sidebar's PROJECTS group; its page
