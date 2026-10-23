@@ -1,4 +1,10 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v7 (2026-10-23) — the FULL-NODE MATCHING completion
+# (class proven on Fit drive 4 the same hour): the name-ask
+# selectors carry Pip's complete heading "Hi! I'm Pip.
+# Welcome in! What's your name?" (sourced from the packaged
+# chunk's tour.stop.name) at the runFlow condition and acct
+# 2's wait. v6's conditional-tour shape stands. v6: 21,009 B.
 # Version: v6 (2026-10-23) — v5 FAILED-INSTRUMENT at drive 5 (run
 # 39954174559, step-022): the sign-in FIRED and the account
 # LOADED (the cold-channel failure did not recur) — and the
@@ -184,7 +190,7 @@ appId: shop.ilseplacencia.needsme
 - runFlow:
     when:
       visible:
-        text: "What's your name?"
+        text: "Hi! I'm Pip. Welcome in! What's your name?"
     commands:
       - tapOn:
           text: "Your name"
@@ -477,7 +483,7 @@ appId: shop.ilseplacencia.needsme
     timeout: 90000
 - extendedWaitUntil:
     visible:
-      text: "What's your name?"
+      text: "Hi! I'm Pip. Welcome in! What's your name?"
     timeout: 60000
 - tapOn:
     text: "Your name"
