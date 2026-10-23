@@ -1,4 +1,11 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v26 (2026-10-24) — every warm cycle is gated on
+# "Opening..." NOT standing (drive 24: the cycle fired
+# mid-flight at the relogin leg, erased the field under a
+# healthy in-flight attempt, and the door-gone judge died
+# with the spinner still turning). The cycle's key could
+# not tell "submit never registered" from "submit in
+# flight"; the nested gate can.
 # Version: v25 (2026-10-24) — the cold door's first email leg
 # gains a settle + an erase-first retype net keyed on the typed
 # address not standing (drive 23's first-input race).
@@ -276,20 +283,24 @@ appId: shop.ilseplacencia.needsme
     when:
       visible: "Join Needs Me"
     commands:
-      - tapOn:
-          text: "Password"
-          waitUntilVisible: true
-          retryTapIfNoChange: true
-      - waitForAnimationToEnd
-      - eraseText: 60
-      - inputText: "${TEST_PASSWORD}"
-      - tapOn:
-          point: "90%, 59%"
-      - tapOn:
-          text: "Join Needs Me"
-          waitUntilVisible: true
-          retryTapIfNoChange: true
-      - waitForAnimationToEnd
+      - runFlow:
+          when:
+            notVisible: "Opening..."
+          commands:
+          - tapOn:
+              text: "Password"
+              waitUntilVisible: true
+              retryTapIfNoChange: true
+          - waitForAnimationToEnd
+          - eraseText: 60
+          - inputText: "${TEST_PASSWORD}"
+          - tapOn:
+              point: "90%, 59%"
+          - tapOn:
+              text: "Join Needs Me"
+              waitUntilVisible: true
+              retryTapIfNoChange: true
+          - waitForAnimationToEnd
 # DRIVE 18 (run 40012926486) died at the FIRST leg's door-gone
 # wait, step-038: the race won three straight attempts (the
 # type, the placeholder retype, the recovery's retype) and the
@@ -694,20 +705,24 @@ appId: shop.ilseplacencia.needsme
     when:
       visible: "Join Needs Me"
     commands:
-      - tapOn:
-          text: "Password"
-          waitUntilVisible: true
-          retryTapIfNoChange: true
-      - waitForAnimationToEnd
-      - eraseText: 60
-      - inputText: "${TEST_PASSWORD}"
-      - tapOn:
-          point: "90%, 59%"
-      - tapOn:
-          text: "Join Needs Me"
-          waitUntilVisible: true
-          retryTapIfNoChange: true
-      - waitForAnimationToEnd
+      - runFlow:
+          when:
+            notVisible: "Opening..."
+          commands:
+          - tapOn:
+              text: "Password"
+              waitUntilVisible: true
+              retryTapIfNoChange: true
+          - waitForAnimationToEnd
+          - eraseText: 60
+          - inputText: "${TEST_PASSWORD}"
+          - tapOn:
+              point: "90%, 59%"
+          - tapOn:
+              text: "Join Needs Me"
+              waitUntilVisible: true
+              retryTapIfNoChange: true
+          - waitForAnimationToEnd
 # Drive 13 (run 39982344661): this leg's type raced into nothing
 # — the failure frame stands on the door with the field EMPTY
 # and the app's own hint "Type your password first." standing;
@@ -974,20 +989,24 @@ appId: shop.ilseplacencia.needsme
     when:
       visible: "Join Needs Me"
     commands:
-      - tapOn:
-          text: "Password"
-          waitUntilVisible: true
-          retryTapIfNoChange: true
-      - waitForAnimationToEnd
-      - eraseText: 60
-      - inputText: "${TEST_PASSWORD2}"
-      - tapOn:
-          point: "90%, 59%"
-      - tapOn:
-          text: "Join Needs Me"
-          waitUntilVisible: true
-          retryTapIfNoChange: true
-      - waitForAnimationToEnd
+      - runFlow:
+          when:
+            notVisible: "Opening..."
+          commands:
+          - tapOn:
+              text: "Password"
+              waitUntilVisible: true
+              retryTapIfNoChange: true
+          - waitForAnimationToEnd
+          - eraseText: 60
+          - inputText: "${TEST_PASSWORD2}"
+          - tapOn:
+              point: "90%, 59%"
+          - tapOn:
+              text: "Join Needs Me"
+              waitUntilVisible: true
+              retryTapIfNoChange: true
+          - waitForAnimationToEnd
 - runFlow:
     when:
       visible: "Type your password first."
