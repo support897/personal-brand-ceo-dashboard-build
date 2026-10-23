@@ -1,4 +1,14 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v11 (2026-10-24) — v10's PICK-ROW CURE LANDED
+# WHOLE on drive 9 (run 39965174253): the picker opened on
+# "Personal ›", the project was named, the task saved and
+# 11-task-stands stands. Death at step-050, the tick: frame
+# 11 stands with the SIDEBAR OPEN over the list (the project
+# leg left it standing; the home squeezed into its sliver at
+# the right, exactly her sidebar law) and the row's "Done"
+# lives on the list behind it. v11 closes the sidebar first —
+# conditional on a sidebar-only item, by the content sliver,
+# the Pace v16 shape — then ticks.
 # Version: v10 (2026-10-23) — v9's GREETING CURE LANDED on
 # drive 8 (run 39963727071): the sidebar opened, "Hello,
 # friend" passed, the project road opened, and the task title
@@ -347,6 +357,19 @@ appId: shop.ilseplacencia.needsme
       text: "Sim drive NM task"
     timeout: 60000
 - takeScreenshot: 11-task-stands
+# CLOSE THE SIDEBAR FIRST (drive 9, run 39965174253): frame
+# 11 stands with the sidebar OPEN over the task list — the
+# project leg left it standing, its sliver of home squeezed
+# at the right — and the row's "Done" lives on the list
+# behind it. The close is conditional on a sidebar-only item
+# and lands on the content sliver, the Pace v16 shape.
+- runFlow:
+    when:
+      visible: "Insights"
+    commands:
+      - tapOn:
+          point: "93%, 50%"
+      - waitForAnimationToEnd
 # Tick the task's to-do: the row's own button reads "Done" (the
 # b12 walk's tickDone road). Exactly one task stands in this
 # account, so the one "Done" in the list is the sentinel's.
