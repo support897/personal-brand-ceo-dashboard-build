@@ -213,6 +213,23 @@ appId: shop.ilseplacencia.needsme
 - waitForAnimationToEnd
 - runFlow:
     when:
+      visible: "Type your password first."
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - inputText: "${TEST_PASSWORD}"
+      - tapOn:
+          point: "90%, 59%"
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
       visible: "Your account could not load. Try again."
     commands:
       - tapOn:
@@ -585,6 +602,23 @@ appId: shop.ilseplacencia.needsme
     waitUntilVisible: true
     retryTapIfNoChange: true
 - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Type your password first."
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - inputText: "${TEST_PASSWORD2}"
+      - tapOn:
+          point: "90%, 59%"
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
 - runFlow:
     when:
       visible: "Your account could not load. Try again."
