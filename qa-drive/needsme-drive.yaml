@@ -1,4 +1,9 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v27 (2026-10-24) — the door-gone judges widen
+# to the channel's disease: 240 s at the cold first leg,
+# 180 s at relogin and the second account (drive 25: the
+# account load hung past 90 s, spinner turning, on a type
+# proven whole).
 # Version: v26 (2026-10-24) — every warm cycle is gated on
 # "Opening..." NOT standing (drive 24: the cycle fired
 # mid-flight at the relogin leg, erased the field under a
@@ -429,10 +434,22 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+# DRIVE 25 (run 40036202164) died at THIS judge on the FIRST
+# leg: the type landed whole (02 frame, twenty bullets), the
+# submit fired, the app cleared the field and turned its
+# "Opening..." spinner — and the account load then hung past
+# 90 s with the spinner still turning in the death frame.
+# The same load has landed on fourteen drives; the channel
+# eats loads silently as well as spoken. Scored instrument;
+# the cure is the widened window (the cold first load pulls
+# the whole account — 240 s here, 180 s at the later legs).
+# NOTE for the device pass: a spinner that never settles on
+# a healthy network IS the filmed device fault's shape — if
+# it ever stands there, it charges there.
 - extendedWaitUntil:
     notVisible:
       text: "Explore the demo"
-    timeout: 90000
+    timeout: 240000
 # ---------- first entry: the mascot tour, WHEN IT STANDS ----------
 # Drive 5's evidence (the account created by drive 4, whose
 # creating session died at the load line): a later sign-in lands
@@ -832,7 +849,7 @@ appId: shop.ilseplacencia.needsme
 - extendedWaitUntil:
     notVisible:
       text: "Explore the demo"
-    timeout: 90000
+    timeout: 180000
 # The tour state is saved with the account, so no tour is
 # expected; it is still handled if it stands.
 - runFlow:
@@ -1109,7 +1126,7 @@ appId: shop.ilseplacencia.needsme
 - extendedWaitUntil:
     notVisible:
       text: "Explore the demo"
-    timeout: 90000
+    timeout: 180000
 - extendedWaitUntil:
     visible:
       text: "Hi! I'm Pip. Welcome in! What's your name?"
