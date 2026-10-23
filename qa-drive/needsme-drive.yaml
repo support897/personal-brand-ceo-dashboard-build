@@ -1,4 +1,7 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v25 (2026-10-24) — the cold door's first email leg
+# gains a settle + an erase-first retype net keyed on the typed
+# address not standing (drive 23's first-input race).
 # Version: v24 (2026-10-24) — DIAGNOSTIC ONLY, no behaviour
 # change. Drive 10 (run 39970639716) stands as the
 # campaign's strangest artefact: 05-inside stands whole
@@ -181,16 +184,38 @@ appId: shop.ilseplacencia.needsme
 - takeScreenshot: 00-door
 # ---------- stage (i): sign up, account 1 (email step, then -------
 # ---------- password step; the one button does both) --------------
+# DRIVE 23 (run 40031652268) died HERE, before 01-email-step:
+# the artefact holds only 00-door + the final frame, which
+# stands on the pristine door, the field EMPTY — the first
+# tap/type raced the cold boot's paint and nothing landed.
+# The door itself rendered whole (the "Explore the demo" wait
+# passed; the frame is the v4 door complete). Cure (v25): a
+# settle before the field tap, and the typed-address judge
+# gains the password legs' retype net — one erase-first retype
+# keyed on the address not standing — before the fatal judge,
+# widened to 30 s.
+- waitForAnimationToEnd
 - tapOn:
     text: "you@example.com"
     waitUntilVisible: true
     retryTapIfNoChange: true
 - waitForAnimationToEnd
 - inputText: "${TEST_EMAIL}"
+- runFlow:
+    when:
+      notVisible: "${TEST_EMAIL}"
+    commands:
+      - tapOn:
+          text: "you@example.com"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - eraseText: 60
+      - inputText: "${TEST_EMAIL}"
 - extendedWaitUntil:
     visible:
       text: "${TEST_EMAIL}"
-    timeout: 15000
+    timeout: 30000
 - takeScreenshot: 01-email-step
 - tapOn:
     text: "Next"
