@@ -1,4 +1,12 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v30 (2026-10-24) — every password leg gains
+# the RESUBMIT (one "Join Needs Me" tap keyed on
+# "Opening..." still standing after all recoveries —
+# drive 28: the type landed whole, twenty bullets in the
+# frame, and the attempt hung dead in flight through
+# the whole judge; a re-fired sign-in with the same
+# credentials is safe) and the first leg gains the
+# placeholder pair it never had (drive 25's shape).
 # Version: v29 (2026-10-24) — the relogin and second-
 # account password legs gain the PLACEHOLDER RETYPE PAIR
 # before their door-gone judges (drive 27: the silent
@@ -462,6 +470,51 @@ appId: shop.ilseplacencia.needsme
 # NOTE for the device pass: a spinner that never settles on
 # a healthy network IS the filmed device fault's shape — if
 # it ever stands there, it charges there.
+- runFlow:
+    when:
+      visible: "Password"
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - eraseText: 60
+      - inputText: "${TEST_PASSWORD}"
+      - tapOn:
+          point: "90%, 59%"
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Password"
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - eraseText: 60
+      - inputText: "${TEST_PASSWORD}"
+      - tapOn:
+          point: "90%, 59%"
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Opening..."
+    commands:
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
 - extendedWaitUntil:
     notVisible:
       text: "Explore the demo"
@@ -898,6 +951,15 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Opening..."
+    commands:
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
 - extendedWaitUntil:
     notVisible:
       text: "Explore the demo"
@@ -1224,6 +1286,15 @@ appId: shop.ilseplacencia.needsme
       - inputText: "${TEST_PASSWORD2}"
       - tapOn:
           point: "90%, 59%"
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Opening..."
+    commands:
       - tapOn:
           text: "Join Needs Me"
           waitUntilVisible: true
