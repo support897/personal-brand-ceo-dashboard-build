@@ -1,4 +1,15 @@
 # NeedsMe 13 simulator drive — QA Tester chair.
+# Version: v29 (2026-10-24) — the relogin and second-
+# account password legs gain the PLACEHOLDER RETYPE PAIR
+# before their door-gone judges (drive 27: the silent
+# load hang at the relogin door — "Opening..." turning,
+# the field cleared, no spoken line for the recoveries;
+# every gated recovery stood down by design and the
+# 180 s judge expired. The pair keys on the placeholder
+# standing, which is true exactly when the field is
+# empty: the type raced, or the app cleared the field
+# under a dead attempt. The account-2 pair types
+# TEST_PASSWORD2.)
 # Version: v28 (2026-10-24) — the relogin project proof
 # becomes conditional evidence capture per sub-view
 # (drive 26: the project restores either its overview or
@@ -851,6 +862,42 @@ appId: shop.ilseplacencia.needsme
           waitUntilVisible: true
           retryTapIfNoChange: true
       - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Password"
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - eraseText: 60
+      - inputText: "${TEST_PASSWORD}"
+      - tapOn:
+          point: "90%, 59%"
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Password"
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - eraseText: 60
+      - inputText: "${TEST_PASSWORD}"
+      - tapOn:
+          point: "90%, 59%"
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
 - extendedWaitUntil:
     notVisible:
       text: "Explore the demo"
@@ -1131,6 +1178,42 @@ appId: shop.ilseplacencia.needsme
 - runFlow:
     when:
       visible: "Email or password did not match."
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - eraseText: 60
+      - inputText: "${TEST_PASSWORD2}"
+      - tapOn:
+          point: "90%, 59%"
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Password"
+    commands:
+      - tapOn:
+          text: "Password"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+      - eraseText: 60
+      - inputText: "${TEST_PASSWORD2}"
+      - tapOn:
+          point: "90%, 59%"
+      - tapOn:
+          text: "Join Needs Me"
+          waitUntilVisible: true
+          retryTapIfNoChange: true
+      - waitForAnimationToEnd
+- runFlow:
+    when:
+      visible: "Password"
     commands:
       - tapOn:
           text: "Password"
